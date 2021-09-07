@@ -46,40 +46,40 @@
 
 //Extends, implements 
 
-interface Veiculo {
-  rodas: number,
-  acelerar:() => void,
-  frear:() => void
-}
+// interface Veiculo {
+//   rodas: number,
+//   acelerar:() => void,
+//   frear:() => void
+// }
 
-interface Moto extends Veiculo {
-  capacete: boolean,
-  empinar: () => void 
-}
+// interface Moto extends Veiculo {
+//   capacete: boolean,
+//   empinar: () => void 
+// }
 
-let bross: Moto
-bross.acelerar
+// let bross: Moto
+// bross.acelerar
 
-class CriarVeiculo implements Veiculo {
-  rodas: number
-  constructor(rodas: number) {
-    this.rodas = rodas 
-  }
+// class CriarVeiculo implements Veiculo {
+//   rodas: number
+//   constructor(rodas: number) {
+//     this.rodas = rodas 
+//   }
 
-  acelerar() {
-    console.log('vrum vrum')
-  }
-}
+//   acelerar() {
+//     console.log('vrum vrum')
+//   }
+// }
 
-//Pick & Omit - pegar e omitir
+// //Pick & Omit - pegar e omitir
 
-interface Post {
-  id: number
-  title: string
-  description: string
-}
+// interface Post {
+//   id: number
+//   title: string
+//   description: string
+// }
 
-type PostPreview = Pick<Post, 'id' | 'title'>
+// type PostPreview = Pick<Post, 'id' | 'description'>
 
-let post: PostPreview
-post.description
+// let post: PostPreview
+// post.description

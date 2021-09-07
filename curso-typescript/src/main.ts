@@ -72,3 +72,32 @@ let mensagem = 'Cataline'
 //7 Type Assertion
 // const inputName = document.querySelector('#name') as HTMLInputElement
 // inputName.value 
+
+import {sum} from './calculator.js'
+
+console.log(sum(5,5))
+
+//Dependencias
+
+import axios from 'axios' 
+axios.get('/todos', { })
+
+// import Simplebar from 'simplebar'
+
+// const content = document.querySelector('#content') as HTMLElement
+// const simplebar = new Simplebar(content, {autoHide: true})
+
+// const onscreen = require('onscreen')
+
+//Decorator - fazer anotacao da versao da api 
+function setApiVersion(apiVersion: string) {
+  return (constructor: any) => {
+    return class extends constructor  {
+      version = apiVersion
+    }
+  }
+}
+@setApiVersion('1.0.0')
+class API {}
+
+console.log(new API())
