@@ -1,30 +1,55 @@
 <template>
- <Header />
+  <div class="users">
+    <div class="container">
+      <section>
+        <h5 class="title">
+          Lista de Usuários
+        </h5>
+        <ul>
+          <!-- <li v-for="(user, index) in users" :key="index"></li> = Caso não tenha ID, pega posição no index-->  
+          <li v-for="user in users" :key="user.id">
+            <p>{{user.name}}</p>
+            <small>{{user.email}}</small>
+            <a class="destroy"></a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-  import {defineComponent} from 'vue'
-  import Header from '@/components/Header.vue'
-  import axios from '@/utils/axios.ts'
+  import {defineComponent} from 'vue';
+  import axios from '@/utils/axios';
 
+  interface User {
+    id: string,
+    email: string,
+    name: string
+  }
   export default defineComponent({
-    components: {Header},
     data() {
       return {
-        name:"cataline",
+        users: [] as User[]
+       }
       },
       //hook
-      created() {
+       created() {
         this.fetchUsers()
+        console.log(this.users)
       }, 
       methods: {
         async fetchUsers() {
-          const response = await axios.get('/users')
-          console.log(response)
+         try {
+            const {data} = await axios.get('/users')
+            this.users = data
+         }
+         catch (error ){
+           console.warn(error)
+         }
         }
       }
-    }
-   });
+    })
 </script>
 
 <style scoped >
