@@ -3,6 +3,18 @@
     <div class="container">
       <section>
         <h5 class="title">
+          Novo usuário
+        </h5>
+         <!-- v-moldel = data biding -->
+        <form v-on:submit.prevent="createUser">
+          <input type="text" placeholder="Nome" v-model="form.name">
+          <input type="text" placeholder="email" v-model="form.email">
+          <button type="submit">Adicionar</button>
+
+        </form>
+      </section>
+      <section>
+        <h5 class="title">
           Lista de Usuários
         </h5>
         <ul>
@@ -10,7 +22,7 @@
           <li v-for="user in users" :key="user.id">
             <p>{{user.name}}</p>
             <small>{{user.email}}</small>
-            <a class="destroy"></a>
+            <a class="destroy" @click="destroyUser(user.id)"></a> 
           </li>
         </ul>
       </section>
@@ -21,22 +33,21 @@
 <script lang="ts">
   import {defineComponent} from 'vue';
   import axios from '@/utils/axios';
+  import { User } from '@/models'
 
-  interface User {
-    id: string,
-    email: string,
-    name: string
-  }
   export default defineComponent({
     data() {
       return {
-        users: [] as User[]
+        users: [] as User[],
+        form: {
+          name: '',
+          email: ''
+        }
        }
       },
       //hook
        created() {
         this.fetchUsers()
-        console.log(this.users)
       }, 
       methods: {
         async fetchUsers() {
@@ -47,6 +58,37 @@
          catch (error ){
            console.warn(error)
          }
+        },
+        async createUser() {
+          try {
+            const {data} = await axios.post('/users', this.form
+          // {
+          //   name: this.form.name,
+          //   email: this.form.email,
+          // }
+        )
+          this.users.push(data)
+          this.form.name = ""
+          this.form.email = ""
+
+          // this.form= {
+          //   name: "", 
+          //   email: ""
+          // }
+          }
+          catch {
+            console.log(Error)
+          } 
+        },
+        async destroyUser(id: User['id']) {
+          try {
+            await axios.delete(`/users/${id}`)
+            const userIndex = this.users.findIndex((user)=>user.id ===id)
+            this.users.splice(userIndex, 1)
+          }
+          catch (Error){
+            console.warn(Error)
+          }
         }
       }
     })
