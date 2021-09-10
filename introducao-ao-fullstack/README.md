@@ -9,7 +9,7 @@
 
 ## 💻 Sobre 
 
-Neste módulo, foi desenvolvida uma aplicação simples com as funções de criar, exibir e deletar usuáruis, utilizando backend com Node.js e frontend com Vue.js (Typescript e pacote uuid para criar o id único do usuário). 
+Neste módulo, foi desenvolvida uma aplicação simples com as funções de criar, exibir e deletar usuários, utilizando backend com Node.js e frontend com Vue.js (Typescript e pacote uuid para criar o id único do usuário). 
 
 
 ---
