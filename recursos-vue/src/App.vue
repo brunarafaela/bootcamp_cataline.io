@@ -1,27 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <h1> {{count}}</h1>
+  <button @click="increment">incrementar</button>
+  <button @click="decrease">diminuir</button>
+  <button @click="reset">resetar</button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from 'vue' //tipagem typescript
 
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment(){
+      this.count ++ 
+    },
+    decrease(){
+      this.count --
+    },
+    reset(){
+      this.count = 0
+    }
+  },
+  watch: {
+    count(newValue, oldValue) {
+      console.log(oldValue)
+      console.log(newValue)
+    }
   }
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
