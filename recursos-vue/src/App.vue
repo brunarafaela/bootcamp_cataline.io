@@ -1,49 +1,28 @@
 <template>
-  <p v-for="todo in doneTodos" :key="todo.text">
-    {{todo.text}}
-  </p>
-  <button @click="checkAllTodos">finalizar</button>
+    <h1>{{count}}</h1>
+    <button @click="count++">add</button>
+    <button @click="destroyComponent">desmontar</button>
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue' //tipagem typescript
 
-interface Todo {
-  text: string,
-  done: boolean
-}
-
 export default defineComponent({
   data() {
     return {
-      todos: [ ] as Todo[]
+       count: 0
     }
   }, 
-  created(){
-    this.todos = [
-        { text: 'Estudar Typescript', done: true },
-        { text: 'Lavar os pratos', done: false },
-        { text: 'Aprender Nuxt.js', done: true }
-      ]  
+  beforeUnmount() {
+    console.log('salvar a contagem no db ')
   },
-  computed: {
-    doneTodos(): Todo []{
-      return this.todos.filter((todo) => todo.done)
-    }
+  unmounted() {
+    alert('obrigado por usar!')
   },
-    methods: {
-      checkAllTodos() {
-        this.todos = this.todos.map(({text}) =>{
-          return {text, done: true}
-        })
-    }
-  },
-  watch: {
-    todos(newValue: Todo[]) {
-      const isFinished = !newValue.some(({done}) => !done)
-      if (isFinished) {
-        alert('Yuppppi') 
-      }
+  methods: {
+    destroyComponent (){
+      this.$.appContext.app.unmount()
     }
   }
 })
