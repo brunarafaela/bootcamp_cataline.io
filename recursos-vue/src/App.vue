@@ -42,7 +42,7 @@ export default defineComponent({
     todos(newValue: Todo[]) {
       const isFinished = !newValue.some(({done}) => !done)
       if (isFinished) {
-        alert('Yuppppi')
+        alert('Yuppppi') 
       }
     }
   }
