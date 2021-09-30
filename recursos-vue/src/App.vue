@@ -1,5 +1,6 @@
 <template>
-    <a v-bind:href="product.url" v-bind:class="productClass">
+    <div>
+      <a v-bind:href="product.url" v-bind:class="productClass">
       {{product.name}}
     </a>
     <p>{{company}} é legal</p>
@@ -19,6 +20,43 @@
       <h1 v-else>outro</h1>
     </div>
     <h1 v-show="sex === 'Masculino' ">Masculino</h1>
+    <div>
+      <ul>
+        <li v-for="product in products" v-bind:key="product.id">
+          {{product.name}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <form>
+      <input type="text" placeholder="Nome" v-model.lazy="form.name"/>
+  
+      <input type="number" placeholder="Idade" v-model.number="form.age"/>
+  
+      <textarea rows="2" placeholder="Descrição" v-model.trim="form.message"></textarea>
+  
+      <input type="checkbox" v-model="form.newsletter"/> Newsletter <br />
+  
+      <input type="radio" name="color" value="vermelho" v-model="form.color"/> Vermelho
+      <input type="radio" name="color" value="verde" v-model="form.color" /> Verde
+      <input type="radio" name="color" value="azul" v-model="form.color" /> Azul
+  
+      <select v-model="form.fruit">
+        <option disabled selected>Selecione uma fruta</option>
+        <option value="uva">Uva</option>
+        <option value="banana">Banana</option>
+        <option value="morango">Morango</option>
+      </select>
+    </form>
+  
+    <p>Nome: {{ form.name }}</p>
+    <p>Idade: {{ form.age }}</p>
+    <p>Mensagem: {{ form.message }}</p>
+    <p>Newsletter: {{ form.newsletter }}</p>
+    <p>Cor: {{ form.color }}</p>
+    <p>Fruta: {{ form.fruit }}</p>
+    </div>
+    </div>
 
 </template>
 
@@ -44,6 +82,15 @@ export default defineComponent({
       stock: 1,
       sex: 'Feminino',
 
+     form: {
+        name: '',
+        age: 0,
+        message: '',
+        newsletter: false,
+        color: '',
+        fruit: ''
+     }
+
     }
   },
   computed: {
@@ -54,12 +101,27 @@ export default defineComponent({
   methods: {
     something(){
       console.log('hwllow cataline')
+    },
+    sendForm(){
+      //axios.post('/register', form)
     }
   }
 })
 </script>
 
-<style>
+<style scoped>
+
+input[type='email'],
+  input[type='text'],
+  select,
+  textarea {
+    display: block;
+  }
+  
+  form {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #000;
+  }
   .danger{
     color:red;
   }
