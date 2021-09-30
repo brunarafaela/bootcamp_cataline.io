@@ -56,8 +56,11 @@
     <p>Cor: {{ form.color }}</p>
     <p>Fruta: {{ form.fruit }}</p>
     </div>
-    </div>
 
+    <div>
+      <h1 v-highlight:background.shadow="'red'">Hwllowww</h1>
+    </div>
+    </div>
 </template>
 
 <script lang="ts"> 
@@ -105,6 +108,9 @@ export default defineComponent({
     sendForm(){
       //axios.post('/register', form)
     }
+  },
+  directives: {
+    
   }
 })
 </script>
