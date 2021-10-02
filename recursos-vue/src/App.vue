@@ -1,12 +1,60 @@
 <template>
   <div>
-    <ul>
-      <li @click="currentView = 'Home' ">Home</li>
-      <li @click="currentView = 'About' " >Sobre</li>
-      <li @click="currentView = 'Contact' " >Contato</li>
-    </ul>
+        <!-- <transition
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @after-enter="afterEnter"
+          @enter-cancelled="enterCancelled"
+          @before-leave="beforeLeave"
+          @leave="leave"
+          @after-leave="afterLeave"
+          @leave-cancelled="leaveCancelled"
+          :css="false"
+        >
+        </transition> -->
 
-    <component :is="currentView"/>
+    <!-- <button @click="show = !show">toggle</button>
+    <transition name="fade" enter-active-class="animate__animated animate__bounce"
+    leave-active-class="animate__animated animate__bounce"
+     @before-enter="beforeEnter"
+     @after-enter="afterEnter"
+     :appear="true"
+     mode="out-in"
+    >
+      <h1 v-if="show">Front-end</h1>
+      <h1 v-else>Back-end</h1>
+    </transition> -->
+
+    <ul>
+      <li @click="view = 'Home' ">Home</li>
+      <li @click="view = 'About' " >Sobre</li>
+      <li @click="view = 'Contact' " >Contato</li>
+    </ul>
+   
+   <transition
+    name="fade" enter-active-class="animate__animated animate__bounce"
+    leave-active-class="animate__animated animate__bounce"
+     @before-enter="beforeEnter"
+     @after-enter="afterEnter"
+     :appear="true"
+     mode="out-in"
+    > 
+      <component :is="view"/>
+    </transition>
+
+   <button @click="filterAZ">filtro a-z</button>   
+   <button @click="filterZA">filtro z-a</button>   
+
+   <transition-group
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+     :appear="true"
+     mode="out-in"
+    > 
+        <li v-for="user in users" :key="user">
+          {{user}}
+        </li>
+    </transition-group>
 
     <ButtonStyled text="Facebook" color="primary" v-bind:user="user">
       <template v-slot:before>
@@ -25,13 +73,16 @@ import { defineComponent } from 'vue'
 import Home from '@/pages/Home.vue'
 import About from '@/pages/About.vue'
 import Contact from '@/pages/Contact.vue'
+import 'animate.css'
 
 export default defineComponent({ 
   data() {
     return { 
+      show: true,
       user: {
       },
-      currentView: 'Home'
+      view: 'Home',
+      users: ['bruna', 'rafaela', 'viana', 'lima']
     }
   },
   components :{
@@ -42,9 +93,50 @@ export default defineComponent({
   computed: {
   },
   methods: { 
+    filterAZ() {
+      this.users.sort()
+    },
+    filterZA() {
+      this.users.sort().reverse()
+    },
     action(event: string){
       console.log(event)
-    }
+    },
+        // --------
+          // ENTERING
+          // --------
+          beforeEnter(element: HTMLElement) {
+            element.classList.add('test')
+          },
+          // enter(el, done) {
+          //   // ...
+          //   done()
+          // },
+          afterEnter(element: HTMLElement) {
+            element.classList.add('test2')
+          },
+          // enterCancelled(el) {
+          //   // ...
+          // },
+      
+          // // --------
+          // // LEAVING
+          // // --------
+          // beforeLeave(el) {
+          //   // ...
+          // },
+          // leave(el, done) {
+          //   // ...
+          //   done()
+          // },
+          // afterLeave(el) {
+          //   // ...
+          // },
+          // // disponível apenas com v-show
+          // leaveCancelled(el) {
+          //   // ...
+          // }
+    
   }, 
   directives: {
   }
@@ -52,5 +144,37 @@ export default defineComponent({
 </script>
 
 <style> 
+/* .fade-enter-from, .fade-leave-to {
+  opacity: 0
+}
+
+.entrada, .saida {
+  transition: opacity 0.5s;
+}
+ 
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+
+.entrada {
+  background: green;
+}
+
+.saida { 
+  background: red;
+} */
+
+.v-move {
+  transition: all 0.5s;
+}
+
+.test {
+  background: pink;
+}
+
+.test2 {
+  background: blueviolet;
+}
 </style> 
+
 
