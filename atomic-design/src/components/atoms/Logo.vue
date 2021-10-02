@@ -1,20 +1,16 @@
 <template>
-  <div class="app">
-    <NavBar />
-  </div>
+  <img class="logo" src="@/assets/images/logo.svg" alt="Marcos" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import {NavBar} from '@/components/molecules'
 
 export default defineComponent({
-  components: { NavBar }
 })
 </script>
 
 <style lang="scss" scoped>
-  .app {
-    margin: 30px;
-  } 
+.logo {
+  width: 100%;
+}
 </style>
