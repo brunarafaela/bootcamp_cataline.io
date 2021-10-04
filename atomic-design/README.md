@@ -7,8 +7,7 @@
 </h3>
 
 
-<h4>Deploy: <a href="https://vercel.com/brunarafaela/atomic-design" alt="Deploy da aplicação">veja online aqui</a></h4>
----
+<h4>Deploy: <a href="https://atomic-design-jade-two.vercel.app/" alt="Deploy da aplicação">veja online aqui</a></h4>
 
 ## 🚀 Como executar o projeto
 
