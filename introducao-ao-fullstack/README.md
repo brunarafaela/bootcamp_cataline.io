@@ -1,5 +1,5 @@
 <h1>
-     📚 <a href="https://www.cataline.io/bootcamp" alt="Bootcamp Cataline.io">Bootcamp Cataline.io</a>
+     📚 <a href="https://bootcamp.cataline.io/" alt="Bootcamp Cataline.io">Bootcamp Cataline.io</a>
 </h1>
 
 <h3 align="center">
@@ -101,7 +101,7 @@ $ npm run dev
 ## 👩‍💻 Autora
 
 <a href="https://www.linkedin.com/in/brunarafaela/">
- <img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFNJtR2Rcy-qw/profile-displayphoto-shrink_800_800/0/1606371051231?e=1636588800&v=beta&t=9-i2bzd_LP1jE7J1K7yGeC_B9vblXCarb6vCdaGMJsE" width="100px;" alt="Euzinha"/>
+ <img style="border-radius: 50%;" src="https://scontent-gru2-1.cdninstagram.com/v/t51.2885-19/s150x150/240767266_1064756800954809_2111530013056040356_n.jpg?_nc_ht=scontent-gru2-1.cdninstagram.com&_nc_ohc=k62c8gm8z10AX_EEq-f&edm=ABfd0MgBAAAA&ccb=7-4&oh=7e966347a169e276d35cb53ed652a54c&oe=6160E3FC&_nc_sid=7bff83" width="100px;" alt="Euzinha"/>
  <br />
 <b>Bruna Lima</b></a><br />
  <sub> <a href="https://www.linkedin.com/in/brunarafaela/">Linkedin</a> - <a href="https://www.instagram.com/bruna.dev/">Instagram</a> - </sub>
